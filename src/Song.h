@@ -12,5 +12,5 @@ public:
     float loudness;
     float acousticness;
     int year;
-    int points = 0;
+    int score = 0;
 };
