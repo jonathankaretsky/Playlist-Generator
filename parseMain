@@ -1,0 +1,53 @@
+#include <iomanip>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <sstream>
+#include <string>
+using namespace std;
+
+
+vector<string> split( const string &s, char delim ) {
+    vector<string> result;
+    stringstream ss(s);
+    string item;
+    while (getline (ss, item, delim)) {
+        result.push_back (item);
+    }
+    return result;
+}
+
+int main() {
+    unsigned int sizeOfCsv = 0;
+    vector<string> csvLines;
+    vector<string> parsedValues;
+    ifstream file1("genres.csv");
+    if (!file1.is_open())
+    {
+        cout << "not opened" << endl;
+    }
+        string line1;
+        std::getline(file1, line1);
+        for (; std::getline(file1, line1); ++sizeOfCsv)
+        {
+            csvLines.push_back(line1);
+        }
+
+        for(int i =0; i < csvLines.size(); i++)
+        {
+            Song songNode;
+            parsedValues = split( csvLines[i], ',');
+                songNode->title = parsedValues[1];
+                string artist = parsedValues[4].substr(0,parsedValues[4].size()-1);
+                if( parsedValues[8] == "TRUE")
+                    songNode->exp = true; // whether a song is explicit or not
+                else
+                    songNode->exp = false;
+                songNode->danceability = stof(parsedValues[9]);
+                songNode->energy = stof(parsedValues[10]);
+                songNode->loudness = stof(parsedValues[12]) ;
+                songNode->acousticness = stof(parsedValues[15]);
+                songNode->year = stoi(parsedValues[22]);
+        }
+
+    }
