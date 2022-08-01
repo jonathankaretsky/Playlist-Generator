@@ -1,5 +1,5 @@
 #pragma once
-#using <iostream>
+#include <iostream>
 using namespace std;
 
 class Song {
@@ -12,5 +12,5 @@ public:
     float loudness;
     float acousticness;
     int year;
-    int score = 0;
+    float score = 0;
 };
